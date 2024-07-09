@@ -1,0 +1,184 @@
+h2{
+    color:#FFBD58;
+}
+
+ {
+  font-family: Arial, sans-serif;
+}
+.left-column {
+  width: 30%;
+}
+
+.right-column {
+  width: 70%;
+}
+
+.section {
+  margin: 10px;
+  padding: 10px;
+}
+
+.contact-info,
+.education,
+.about-me,
+.work-experience {
+  background-color: #f0f0f0;
+}
+
+.name {
+  font-size: 32px;
+  font-weight: bold;
+}
+
+.title {
+  font-size: 24px;
+}
+
+.profile-pic {
+  border-radius: 50%;
+  width: 150px;
+  height: 150px;
+  overflow: hidden;
+}
+
+.contact-info li,
+.education li {
+  list-style-type: none;
+}
+.color-part1 {
+    color:yellow; /* first color */
+  }
+  .color-part2 {
+    color: FFFFFF; /* second color */
+  }
+  .text-line {
+    font-size: 16px;
+  }
+li{
+    color: aliceblue;
+}
+.reference-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    font-family: Arial, sans-serif;
+  }
+  .reference {
+    text-align: center;
+  }
+  p{
+    color: #f0f0f0;
+  }
+  .text-with-line {
+    font-size: 20px; /* Adjust font size as needed */
+    font-weight: bold; /* Make text bold */
+    display: inline-block; /* Allows the border to fit the content */
+    border-bottom: 3px solid yellow; /* Yellow line below text */
+  }
+ 
+  .text-container {
+    text-align: center; /* Center the text */
+    padding: 10px 0; /* Add padding above and below the text */
+    margin: 0 auto; /* Center the text-container if needed */
+    background-color: rgb(39, 29, 29); /* Set the background color to white */
+    /* You can set a max-width if you want to limit the text width */
+  }
+  .gradient-line {
+    height: 3px; /* Adjust to desired thickness */
+    background-image: linear-gradient(to right, #FFDEAB, #FFDEAB); /* Yellow gradient */
+    border-radius: 10px; /* Gives rounded corners if desired */
+    margin: 5px ; /* Spacing above and below the line */
+  }
+  
+  .profile-container::before {
+    content: '';
+    position: absolute;
+    width: 100%; /* Full width of the container */
+    height: 50px; /* Height of the horizontal band */
+    background-color: #FBBA57; /* Color of the horizontal band */
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 0;
+    
+  }
+  .image-container {
+    position: relative;
+    width: 280px; /* Container width; adjust as needed */
+    height: 300px; /* Container height; adjust as needed */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: 444444; /* Placeholder background color */
+  
+  }
+
+  .image-container::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 100%; /* This will make the line extend the full width of the container */
+    height: 40px; /* Height of the horizontal line */
+    background-color: #FFBD58; /* Yellow color for the line */
+    z-index: 0;
+    transform: translateY(-50%);
+  }
+
+  .circular-image {
+    position: relative;
+    width: 200px; /* Width of the circular image, adjust as needed */
+    height: 200px; /* Height of the circular image, adjust as needed */
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid #FFBD58; /* Border color and width */
+    z-index: 1; /* Higher z-index to ensure the image is above the line */
+  }
+
+  .circular-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .header {
+    font-size: 15px; /* Adjust the size as needed */
+    color: #050505; /* This sets the text color */
+}
+
+.dates {
+    float: right;
+    color: #070707; 
+}
+.resume {
+  width: 750px;
+  display: flex;
+  box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+  min-height: 160vh;
+  margin: 0px auto;
+}
+.box-parent{
+  background: hsl(0, 0%, 27%);
+  width: 290px;
+  height: 290px;
+}
+.references {
+  width: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+}
+.reference {
+  text-align: left;
+}
+.reference-title {
+  font-weight: bolder;
+}
+.reference-contact {
+  margin: 5px 0;
+}
+h1{
+  font-size: 70px;
+}
+h3{
+  font-size: 25px;
+}
