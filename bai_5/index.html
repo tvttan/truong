@@ -1,0 +1,212 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bàn Phím Ảo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+        #note {
+            width: 200px; /* Kích thước ô input */
+            height: 30px; /* Chiều cao ô input */
+            margin-bottom: 10px;
+            padding: 5px;
+            font-size: 15px;
+            border: 1px solid #ccc; /* Đường viền cho ô input */
+        }
+
+        .input-container {
+            display: flex;
+            align-items: center; /* Căn giữa theo chiều dọc */
+            display: flex;
+            gap: 5px;
+        }
+
+        .keyboard {
+            display: flex;
+            flex-wrap: wrap;
+            background-color: #131212;
+            width: 850px;
+        }
+
+        .key {
+            padding: 15px;
+            margin: 5px;
+            border: 1px solid #403f3f;
+            background-color: #f9f9f9;
+            cursor: pointer; 
+            text-align: center;
+            flex: 1;
+            font-size: 18px;
+        }
+
+        .key.wide {
+            flex: 2; /* Đặt độ rộng cho phím rộng */
+        }
+
+        .key:active { 
+            background-color: #bbb; /* Đổi màu khi nhấn phím */
+        }
+
+        .notes-list {
+            margin-top: 20px;
+            width: 100%;
+        }
+
+        .note-item {
+            background-color: #f9f9f9;
+            padding: 15px;
+            margin: 5px;
+            border: 1px solid #ddd;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .note-actions button {
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Bàn Phím Ảo</h1>
+    
+    <div class="input-container">
+        <textarea id="note"></textarea>
+        <button id="saveNote">+</button>
+    </div>
+
+    <div class="keyboard">
+        <div class="key">~</div>
+        <div class="key">1</div>
+        <div class="key">2</div>
+        <div class="key">3</div>
+        <div class="key">4</div>
+        <div class="key">5</div>
+        <div class="key">6</div>
+        <div class="key">7</div>
+        <div class="key">8</div>
+        <div class="key">9</div>
+        <div class="key">0</div>
+        <div class="key">-</div>
+        <div class="key">+</div>
+        <div class="key wide" id="backspace">Backspace</div>
+
+        <div class="key wide" id="space">Space</div>
+        <div class="key">Q</div>
+        <div class="key">W</div>
+        <div class="key">E</div>
+        <div class="key">R</div>
+        <div class="key">T</div>
+        <div class="key">Y</div>
+        <div class="key">U</div>
+        <div class="key">I</div>
+        <div class="key">O</div>
+        <div class="key">P</div>
+        <div class="key">{</div>
+        <div class="key">}</div>
+        <div class="key">|</div>
+
+        <div class="key">A</div>
+        <div class="key">S</div>
+        <div class="key">D</div>
+        <div class="key">F</div>
+        <div class="key">G</div>
+        <div class="key">H</div>
+        <div class="key">J</div>
+        <div class="key">K</div>
+        <div class="key">L</div>
+
+        <div class="key">Z</div>
+        <div class="key">X</div>
+        <div class="key">C</div>
+        <div class="key">V</div>
+        <div class="key">B</div>
+        <div class="key">N</div>
+        <div class="key">M</div>
+
+        <div class="key wide" id="space">Space</div>
+        <div class="key wide" id="backspace">Backspace</div>
+    </div>
+
+    <div class="notes-list" id="notesList"></div>
+
+    <script>
+        // Lấy các phần tử cần thiết
+        const noteInput = document.getElementById('note');
+        const saveNoteButton = document.getElementById('saveNote');
+        const notesList = document.getElementById('notesList');
+        const keys = document.querySelectorAll('.key');
+
+        // Hàm để thêm ký tự vào ô input
+        keys.forEach(key => {
+            key.addEventListener('click', () => {
+                if (key.id === 'backspace') {
+                    noteInput.value = noteInput.value.slice(0, -1); // Xóa ký tự cuối
+                } else if (key.id === 'space') {
+                    noteInput.value += ' '; // Thêm khoảng trắng
+                } else {
+                    noteInput.value += key.textContent; // Thêm ký tự
+                }
+            });
+        });
+
+        // Lưu ghi chú khi nhấn dấu cộng
+        saveNoteButton.addEventListener('click', () => {
+            if (noteInput.value.trim()) { // Kiểm tra xem ô input không trống
+                const noteItem = document.createElement('div');
+                noteItem.className = 'note-item';
+                noteItem.textContent = noteInput.value;
+
+                const deleteButton = document.createElement('button');
+                deleteButton.textContent = 'Xóa';
+                deleteButton.addEventListener('click', () => {
+                    notesList.removeChild(noteItem); // Xóa ghi chú
+                });
+
+                noteItem.appendChild(deleteButton);
+                notesList.appendChild(noteItem); // Thêm ghi chú vào danh sách
+                noteInput.value = ''; // Xóa ô input
+            }
+        });
+        function deleteNote(index) {
+    notes.splice(index, 1);  // Xóa ghi chú tại vị trí index
+    renderNotes();           // Cập nhật danh sách ghi chú
+}
+
+// Sửa ghi chú
+function editNote(index) {
+    note.value = notes[index];    // Hiển thị ghi chú lên textarea
+    editingNoteIndex = index;     // Lưu vị trí của ghi chú đang sửa
+}
+
+// Hiển thị danh sách ghi chú
+function renderNotes() {
+    notesList.innerHTML = '';  // Xóa danh sách hiện tại
+
+    notes.forEach((noteText, index) => {
+        const noteItem = document.createElement('div');
+        noteItem.classList.add('note-item');
+
+        noteItem.innerHTML = `
+            <span>${noteText}</span>
+            <div class="note-actions">
+                <button onclick="editNote(${index})">Sửa</button>
+                <button onclick="deleteNote(${index})">Xóa</button>
+            </div>
+        `;
+
+        notesList.appendChild(noteItem);  // Thêm ghi chú vào danh sách
+    });
+}
+
+    </script>
+</body>
+</html>
